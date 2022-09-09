@@ -1,8 +1,10 @@
 # Azure EventHub Demo
 
+Well, actually it is event grid demo but let's forget about it.
+
 [![Run Build and Test](https://github.com/kolosovpetro/EventHubDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml/badge.svg)](https://github.com/kolosovpetro/EventHubDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml)
 
-In this demo project an example of azure event hub utilizing is shown.
+In this demo project an example of azure event grid utilizing is shown.
 More precisely, we implement two subscriptions, one is subscription to azure blob storage event on behalf of azure
 function,
 another is to be subscription using ASP NET Core web application.
@@ -46,3 +48,7 @@ another is to be subscription using ASP NET Core web application.
 - Create azure event grid system
   topic: `az eventgrid system-topic create -g "event-hub-demo-rg" --name "topicpkolosov" --location "centralus" --topic-type "microsoft.storage.storageaccounts" --source "/subscriptions/{id}/resourceGroups/event-hub-demo-rg/providers/Microsoft.Storage/storageAccounts/storagepkolosov"`
 - Create event grid topic subscription using Azure Portal: `Event Grid System Topics (search) -> Add`
+
+### Create web hook using Ngrok
+- URL: `https://ngrok.com/`
+- `ngrok http --host-header=localhost:44233 44233`

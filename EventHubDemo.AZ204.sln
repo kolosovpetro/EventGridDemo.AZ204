@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{2D44ECA7-C65
 	ProjectSection(SolutionItems) = preProject
 		img\01_test_image.png = img\01_test_image.png
 		img\02_test_image_grayscaled_by_function.png = img\02_test_image_grayscaled_by_function.png
+		img\03_function_log_output.png = img\03_function_log_output.png
 	EndProjectSection
 EndProject
 Global
