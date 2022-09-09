@@ -18,13 +18,21 @@ another is to be subscription using ASP NET Core web application.
 - Create storage
   account: `az storage account create --name "storagepkolosov" --resource-group "event-hub-demo-rg" --location "westus" --sku "Standard_ZRS" --kind "StorageV2"`
 - Create storage
-  container: `az storage container create --name "my-files" --account-name "storagepkolosov" --public-access "blob"`
+  container for images: `az storage container create --name "my-images" --account-name "storagepkolosov" --public-access "blob"`
+- Create storage container for grayscale: `az storage container create --name "grayscale" --account-name "storagepkolosov" --public-access "blob"`
 
 ### Azure Function
 
 - Create azure
   function: `az functionapp create --resource-group "event-hub-demo-rg" --name "functionpkolosov" --runtime "dotnet" --runtime-version "6.0" --os-type "Linux" --storage-account "storagepkolosov" --consumption-plan-location "westus"`
-- Run in folder: `func init --worker-runtime dotnet --force`
+- Run in folder: `mkdir AzureFunction && cd AzureFunction && func init --worker-runtime dotnet --force`
+- Create function: `func new --template "HTTP trigger" --name "Grayscale"`
+- Build & Start function: `func start --build`
+- Install nuget packages to function project:
+  - `dotnet add package Azure.Storage.Blobs`
+  - `dotnet add package Microsoft.Azure.WebJobs.Extensions.EventGrid`
+  - `dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage`
+  - `dotnet add package SixLabors.ImageSharp`
 
 ### Event Grid
 
