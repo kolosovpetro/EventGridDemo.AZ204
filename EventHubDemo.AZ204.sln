@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubDemo.AZ204", "EventHubDemo.AZ204\EventHubDemo.AZ204.csproj", "{199DF063-6DA0-42B3-8FE1-0C94C66D2238}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{3F931885-AD8C-4E4D-BA16-6A1408382183}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6151F230-FE0C-4392-917B-A415CF93958A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{32E3450A-8522-48B5-AD35-EB31F5574760}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\run-build-and-test-dotnet.yml = .github\workflows\run-build-and-test-dotnet.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{199DF063-6DA0-42B3-8FE1-0C94C66D2238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199DF063-6DA0-42B3-8FE1-0C94C66D2238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199DF063-6DA0-42B3-8FE1-0C94C66D2238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199DF063-6DA0-42B3-8FE1-0C94C66D2238}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32E3450A-8522-48B5-AD35-EB31F5574760} = {6151F230-FE0C-4392-917B-A415CF93958A}
+	EndGlobalSection
+EndGlobal
