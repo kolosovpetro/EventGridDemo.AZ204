@@ -3,7 +3,7 @@ using Microsoft.Azure.EventGrid;
 using Microsoft.Azure.EventGrid.Models;
 
 const string endpoint = "https://pkolosovcustomtopic.centralus-1.eventgrid.azure.net/api/events";
-const string key = "bXJtk8I3t/Shd21ePMDP9UHpT0+SZb0xHtzVje5t8AE=";
+const string key = "+ySKHJqvB5a3fRvoe1fD6TdllMTr8xhkshy3XMFHCHo=";
 var topicHostName = new Uri(endpoint).Host;
 
 var acct = new EventGridEvent(
@@ -18,6 +18,7 @@ var credentials = new TopicCredentials(key);
 
 var client = new EventGridClient(credentials);
 
-await client.PublishEventsAsync(topicHostName, new[] { acct });
-
-Console.ReadKey();
+for (var i = 0; i < 10; i++)
+{
+    await client.PublishEventsAsync(topicHostName, new[] { acct });
+}
