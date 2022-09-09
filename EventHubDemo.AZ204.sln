@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{2D44ECA7-C65
 		img\03_function_log_output.png = img\03_function_log_output.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubDemo.AZ204.ConsoleSender", "EventHubDemo.AZ204.ConsoleSender\EventHubDemo.AZ204.ConsoleSender.csproj", "{7C480728-0D5E-41C4-BC76-8E96BC0DD902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{483E26D4-E882-4E9E-AA44-6C39E572B25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483E26D4-E882-4E9E-AA44-6C39E572B25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{483E26D4-E882-4E9E-AA44-6C39E572B25D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C480728-0D5E-41C4-BC76-8E96BC0DD902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C480728-0D5E-41C4-BC76-8E96BC0DD902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C480728-0D5E-41C4-BC76-8E96BC0DD902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C480728-0D5E-41C4-BC76-8E96BC0DD902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{32E3450A-8522-48B5-AD35-EB31F5574760} = {6151F230-FE0C-4392-917B-A415CF93958A}

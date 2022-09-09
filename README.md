@@ -45,10 +45,45 @@ another is to be subscription using ASP NET Core web application.
 - Check registration status: `az provider show --namespace Microsoft.EventGrid --query "registrationState"`
 - NOTE: enable event grid namespace possible as well from azure
   portal: `subscription -> resource providers (top down menu side)`
-- Create azure event grid system
-  topic: `az eventgrid system-topic create -g "event-hub-demo-rg" --name "topicpkolosov" --location "centralus" --topic-type "microsoft.storage.storageaccounts" --source "/subscriptions/{id}/resourceGroups/event-hub-demo-rg/providers/Microsoft.Storage/storageAccounts/storagepkolosov"`
+
+### Create System Topic
+
 - Create event grid topic subscription using Azure Portal: `Event Grid System Topics (search) -> Add`
 
+### Create custom topic
+
+- Create custom
+  topic: `az eventgrid topic create --name "pkolosovcustomtopic" --resource-group "event-hub-demo-rg" --location "centralus"`
+- Keep topic endpoint: `https://pkolosovcustomtopic.centralus-1.eventgrid.azure.net/api/events`
+- Keep topic key: `bXJtk8I3t/Shd21ePMDP9UHpT0+SZb0xHtzVje5t8AE=`
+- Create new event grid subscription using Azure Portal, use ngrok webhook
+
 ### Create web hook using Ngrok
+
 - URL: `https://ngrok.com/`
 - `ngrok http --host-header=localhost:44233 44233`
+- `ngrok http --host-header=localhost:20222 20222`
+
+### Important note: now event grid subs do not support ngrok self signed certificates, deploy app manually
+
+- Create app service
+  plan: `az appservice plan create --name "pkolosovserviceplan" --resource-group "event-hub-demo-rg" --sku "F1"`
+- List available runtimes: `az webapp list-runtimes`
+- Create web
+  app: `az webapp create --resource-group "event-hub-demo-rg" --name "wephookapipkolosov" --plan "pkolosovserviceplan" --runtime "dotnet:6"`
+- Create web
+  app: `az webapp create --resource-group "event-hub-demo-rg" --name "corewebhookapipkolosov" --plan "pkolosovserviceplan" --runtime '"DOTNETCORE|3.1"'`
+- Url: `https://wephookapipkolosov.azurewebsites.net`
+- Publish: `dotnet publish --configuration Release --output .\bin\publish`
+- Create artifact: `Compress-Archive .\bin\publish\* .\app.zip -Force`
+-
+Deploy: `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "wephookapipkolosov"`
+- View app service logs: `az webapp log tail --name "wephookapipkolosov" --resource-group "event-hub-demo-rg"`
+
+### Drop resource group
+
+- `az group delete --name "event-hub-demo-rg"`
+
+### How tp handle validation request
+
+- `https://github.com/MicrosoftDocs/azure-docs/issues/87276`

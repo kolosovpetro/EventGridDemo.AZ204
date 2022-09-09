@@ -12,7 +12,7 @@ namespace EventHubDemo.AZ204.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class EvenHubDemoController : ControllerBase
+public class EventHubDemoController : ControllerBase
 {
     private bool EventTypeSubscriptionValidation
         => HttpContext.Request.Headers["aeg-event-type"].FirstOrDefault() ==
@@ -22,9 +22,9 @@ public class EvenHubDemoController : ControllerBase
         => HttpContext.Request.Headers["aeg-event-type"].FirstOrDefault() ==
            "Notification";
 
-    private readonly ILogger<EvenHubDemoController> _logger;
+    private readonly ILogger<EventHubDemoController> _logger;
 
-    public EvenHubDemoController(ILogger<EvenHubDemoController> logger)
+    public EventHubDemoController(ILogger<EventHubDemoController> logger)
     {
         _logger = logger;
     }
@@ -32,6 +32,9 @@ public class EvenHubDemoController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post()
     {
+        _logger.LogInformation($"Web hook received: {Request.Method}");
+        System.Diagnostics.Trace.TraceInformation($"Web hook received: {Request.Method}");
+
         using (var requestStream = new StreamReader(Request.Body))
         {
             var bodyJson = await requestStream.ReadToEndAsync();
@@ -46,7 +49,16 @@ public class EvenHubDemoController : ControllerBase
 
                 if (parsed && data is SubscriptionValidationEventData subValidationEventData)
                 {
-                    var response = new { subValidationEventData };
+                    var info =
+                        $"Subscription validation event with " +
+                        $"code: {subValidationEventData.ValidationCode}, " +
+                        $"url: {subValidationEventData.ValidationUrl}";
+
+                    System.Diagnostics.Trace.TraceInformation(info);
+
+                    _logger.LogInformation(info);
+
+                    var response = new SubscriptionValidationResponse();
 
                     return new ObjectResult(response);
                 }
@@ -55,13 +67,14 @@ public class EvenHubDemoController : ControllerBase
             if (EventTypeNotification)
             {
                 var notificationEvent = events.First();
-
-                _logger.LogInformation(notificationEvent.Subject);
+                
+                System.Diagnostics.Trace.TraceInformation($"Notification received: {notificationEvent.Subject}");
+                _logger.LogInformation($"Notification received: {notificationEvent.Subject}");
 
                 return new OkResult();
             }
         }
 
-        return new BadRequestResult();
+        return new OkResult();
     }
 }
