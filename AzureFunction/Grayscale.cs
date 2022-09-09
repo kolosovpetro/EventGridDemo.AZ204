@@ -52,7 +52,8 @@ public static class Grayscale
         {
             var createdBlobName = new BlobClient(new Uri(blobCreatedEventData.Url)).Name;
 
-            const string envKey = "AZURE_FUNCTION_STORAGE_CONNECTION";
+            // this value is pre-populated on behalf of azure, no need to set up manually
+            const string envKey = "AzureWebJobsStorage";
 
             var storageConnection = Environment.GetEnvironmentVariable(envKey)
                                     ?? throw new InvalidOperationException(

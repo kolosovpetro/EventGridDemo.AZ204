@@ -19,6 +19,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunction", "AzureFunction\AzureFunction.csproj", "{483E26D4-E882-4E9E-AA44-6C39E572B25D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{2D44ECA7-C651-4325-9F56-A27ADF29FD51}"
+	ProjectSection(SolutionItems) = preProject
+		img\01_test_image.png = img\01_test_image.png
+		img\02_test_image_grayscaled_by_function.png = img\02_test_image_grayscaled_by_function.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
