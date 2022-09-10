@@ -76,14 +76,14 @@ another is to be subscription using ASP NET Core web application.
 - Url: `https://wephookapipkolosov.azurewebsites.net`
 - Publish: `dotnet publish --configuration Release --output .\bin\publish`
 - Create artifact: `Compress-Archive .\bin\publish\* .\app.zip -Force`
--
-Deploy: `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "wephookapipkolosov"`
+- Deploy:
+  `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "wephookapipkolosov"`
 - View app service logs: `az webapp log tail --name "wephookapipkolosov" --resource-group "event-hub-demo-rg"`
 
 ### Drop resource group
 
 - `az group delete --name "event-hub-demo-rg"`
 
-### How tp handle validation request
+### How to handle validation request upon event grid subscription
 
 - `https://github.com/MicrosoftDocs/azure-docs/issues/87276`
