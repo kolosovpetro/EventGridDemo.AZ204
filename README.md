@@ -70,15 +70,15 @@ another is to be subscription using ASP NET Core web application.
   plan: `az appservice plan create --name "pkolosovserviceplan" --resource-group "event-hub-demo-rg" --sku "F1"`
 - List available runtimes: `az webapp list-runtimes`
 - Create web
-  app: `az webapp create --resource-group "event-hub-demo-rg" --name "wephookapipkolosov" --plan "pkolosovserviceplan" --runtime "dotnet:6"`
+  app: `az webapp create --resource-group "event-hub-demo-rg" --name "webhookapipkolosov" --plan "pkolosovserviceplan" --runtime "dotnet:6"`
 - Create web
   app: `az webapp create --resource-group "event-hub-demo-rg" --name "corewebhookapipkolosov" --plan "pkolosovserviceplan" --runtime '"DOTNETCORE|3.1"'`
-- Url: `https://wephookapipkolosov.azurewebsites.net`
+- Url: `https://webhookapipkolosov.azurewebsites.net`
 - Publish: `dotnet publish --configuration Release --output .\bin\publish`
 - Create artifact: `Compress-Archive .\bin\publish\* .\app.zip -Force`
 - Deploy:
-  `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "wephookapipkolosov"`
-- View app service logs: `az webapp log tail --name "wephookapipkolosov" --resource-group "event-hub-demo-rg"`
+  `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "webhookapipkolosov"`
+- View app service logs: `az webapp log tail --name "webhookapipkolosov" --resource-group "event-hub-demo-rg"`
 
 ### Drop resource group
 
