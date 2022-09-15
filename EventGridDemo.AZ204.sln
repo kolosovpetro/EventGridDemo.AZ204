@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubDemo.AZ204", "EventHubDemo.AZ204\EventHubDemo.AZ204.csproj", "{199DF063-6DA0-42B3-8FE1-0C94C66D2238}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventGridDemo.AZ204", "EventGridDemo.AZ204\EventGridDemo.AZ204.csproj", "{199DF063-6DA0-42B3-8FE1-0C94C66D2238}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "items", "items", "{3F931885-AD8C-4E4D-BA16-6A1408382183}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{2D44ECA7-C65
 		img\03_function_log_output.png = img\03_function_log_output.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubDemo.AZ204.ConsoleSender", "EventHubDemo.AZ204.ConsoleSender\EventHubDemo.AZ204.ConsoleSender.csproj", "{7C480728-0D5E-41C4-BC76-8E96BC0DD902}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventGridDemo.AZ204.ConsoleSender", "EventGridDemo.AZ204.ConsoleSender\EventGridDemo.AZ204.ConsoleSender.csproj", "{7C480728-0D5E-41C4-BC76-8E96BC0DD902}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAzureFunctionHandler", "CustomAzureFunctionHandler\CustomAzureFunctionHandler.csproj", "{5E48AC06-52D2-4FB3-87A4-AD1F2F7771AD}"
 EndProject

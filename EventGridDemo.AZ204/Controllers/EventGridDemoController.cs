@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace EventHubDemo.AZ204.Controllers;
+namespace EventGridDemo.AZ204.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class EventHubDemoController : ControllerBase
+public class EventGridDemoController : ControllerBase
 {
     private bool EventTypeSubscriptionValidation
         => HttpContext.Request.Headers["aeg-event-type"].FirstOrDefault() ==
@@ -22,9 +22,9 @@ public class EventHubDemoController : ControllerBase
         => HttpContext.Request.Headers["aeg-event-type"].FirstOrDefault() ==
            "Notification";
 
-    private readonly ILogger<EventHubDemoController> _logger;
+    private readonly ILogger<EventGridDemoController> _logger;
 
-    public EventHubDemoController(ILogger<EventHubDemoController> logger)
+    public EventGridDemoController(ILogger<EventGridDemoController> logger)
     {
         _logger = logger;
     }
@@ -67,7 +67,7 @@ public class EventHubDemoController : ControllerBase
             if (EventTypeNotification)
             {
                 var notificationEvent = events.First();
-                
+
                 System.Diagnostics.Trace.TraceInformation($"Notification received: {notificationEvent.Subject}");
                 _logger.LogInformation($"Notification received: {notificationEvent.Subject}");
 

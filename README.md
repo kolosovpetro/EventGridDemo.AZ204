@@ -1,8 +1,6 @@
-# Azure EventHub Demo
+# Azure EventGrid Demo
 
-Well, actually it is event grid demo but let's forget about it.
-
-[![Run Build and Test](https://github.com/kolosovpetro/EventHubDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml/badge.svg)](https://github.com/kolosovpetro/EventHubDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml)
+[![Run Build and Test](https://github.com/kolosovpetro/EventGridDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml/badge.svg)](https://github.com/kolosovpetro/EventGridDemo.AZ204/actions/workflows/run-build-and-test-dotnet.yml)
 
 In this demo project an example of azure event grid utilizing is shown.
 More precisely, we implement two subscriptions, one is subscription to azure blob storage event on behalf of azure
@@ -13,12 +11,12 @@ another is to be subscription using ASP NET Core web application.
 
 ### Resource group
 
-- Create resource group: `az group create --name "event-hub-demo-rg" --location "westus"`
+- Create resource group: `az group create --name "event-grid-demo-rg" --location "westus"`
 
 ### Storage Account & Container
 
 - Create storage
-  account: `az storage account create --name "storagepkolosov" --resource-group "event-hub-demo-rg" --location "centralus" --sku "Standard_ZRS" --kind "StorageV2"`
+  account: `az storage account create --name "storagepkolosov" --resource-group "event-grid-demo-rg" --location "centralus" --sku "Standard_ZRS" --kind "StorageV2"`
 - Create storage
   container for
   images: `az storage container create --name "my-images" --account-name "storagepkolosov" --public-access "blob"`
@@ -28,7 +26,7 @@ another is to be subscription using ASP NET Core web application.
 ### Azure Function
 
 - Create azure
-  function: `az functionapp create --resource-group "event-hub-demo-rg" --name "functionpkolosov" --runtime "dotnet" --runtime-version "6" --functions-version "4" --os-type "Linux" --storage-account "storagepkolosov" --consumption-plan-location "centralus"`
+  function: `az functionapp create --resource-group "event-grid-demo-rg" --name "functionpkolosov" --runtime "dotnet" --runtime-version "6" --functions-version "4" --os-type "Linux" --storage-account "storagepkolosov" --consumption-plan-location "centralus"`
 - Run in folder: `mkdir AzureFunction && cd AzureFunction && func init --worker-runtime dotnet --force`
 - Create function: `func new --template "HTTP trigger" --name "Grayscale"`
 - Build & Start function: `func start --build`
@@ -53,7 +51,7 @@ another is to be subscription using ASP NET Core web application.
 ### Create custom topic
 
 - Create custom
-  topic: `az eventgrid topic create --name "pkolosovcustomtopic" --resource-group "event-hub-demo-rg" --location "centralus"`
+  topic: `az eventgrid topic create --name "pkolosovcustomtopic" --resource-group "event-grid-demo-rg" --location "centralus"`
 - Keep topic endpoint: `https://pkolosovcustomtopic.centralus-1.eventgrid.azure.net/api/events`
 - Keep topic key: `bXJtk8I3t/Shd21ePMDP9UHpT0+SZb0xHtzVje5t8AE=`
 - Create new event grid subscription using Azure Portal, use ngrok webhook
@@ -67,22 +65,22 @@ another is to be subscription using ASP NET Core web application.
 ### Important note: now event grid subs do not support ngrok self signed certificates, deploy app manually
 
 - Create app service
-  plan: `az appservice plan create --name "pkolosovserviceplan" --resource-group "event-hub-demo-rg" --sku "F1"`
+  plan: `az appservice plan create --name "pkolosovserviceplan" --resource-group "event-grid-demo-rg" --sku "F1"`
 - List available runtimes: `az webapp list-runtimes`
 - Create web
-  app: `az webapp create --resource-group "event-hub-demo-rg" --name "webhookapipkolosov" --plan "pkolosovserviceplan" --runtime "dotnet:6"`
+  app: `az webapp create --resource-group "event-grid-demo-rg" --name "webhookapipkolosov" --plan "pkolosovserviceplan" --runtime "dotnet:6"`
 - Create web
-  app: `az webapp create --resource-group "event-hub-demo-rg" --name "corewebhookapipkolosov" --plan "pkolosovserviceplan" --runtime '"DOTNETCORE|3.1"'`
+  app: `az webapp create --resource-group "event-grid-demo-rg" --name "corewebhookapipkolosov" --plan "pkolosovserviceplan" --runtime '"DOTNETCORE|3.1"'`
 - Url: `https://webhookapipkolosov.azurewebsites.net`
 - Publish: `dotnet publish --configuration Release --output .\bin\publish`
 - Create artifact: `Compress-Archive .\bin\publish\* .\app.zip -Force`
 - Deploy:
-  `az webapp deployment source config-zip --resource-group "event-hub-demo-rg" --src "app.zip" --name "webhookapipkolosov"`
-- View app service logs: `az webapp log tail --name "webhookapipkolosov" --resource-group "event-hub-demo-rg"`
+  `az webapp deployment source config-zip --resource-group "event-grid-demo-rg" --src "app.zip" --name "webhookapipkolosov"`
+- View app service logs: `az webapp log tail --name "webhookapipkolosov" --resource-group "event-grid-demo-rg"`
 
 ### Drop resource group
 
-- `az group delete --name "event-hub-demo-rg"`
+- `az group delete --name "event-grid-demo-rg"`
 
 ### How to handle validation request upon event grid subscription
 
